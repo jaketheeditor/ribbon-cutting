@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catawba Nation — Event Backdrop Presentation</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+<style>
+
+/* ─── Reset & base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold:       #C89020;
+  --gold-lt:    #F4C15A;
+  --brown:      #5D4530;
+  --brown-lt:   #A07050;
+  --navy:       #1E3060;
+  --navy-lt:    #5878A8;
+  --linen:      #F0E4C4;
+  --linen-dk:   #D8C9A8;
+  --cream:      #FFF8EE;
+  --ink:        #1A0E06;
+  --rule:       rgba(200,144,32,0.35);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: #F5EFE3;
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ─── Cover slide ──────────────────────────────────────────────────────────── */
+.cover {
+  min-height: 100vh;
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 60px;
+}
+
+.cover-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(110,78,48,0.30) 0%, transparent 50%),
+    linear-gradient(225deg, rgba(30,48,96,0.25) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+/* Diagonal accent bars on cover */
+.cover-bars {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.cover-bar {
+  position: absolute;
+  top: -20%;
+  height: 140%;
+  transform-origin: center;
+  transform: skewX(-18deg);
+  opacity: 0.06;
+}
+.cover-bar:nth-child(1) { left:  8%; width: 28%; background: var(--gold-lt); }
+.cover-bar:nth-child(2) { left: 30%; width: 18%; background: var(--navy-lt); }
+.cover-bar:nth-child(3) { left: 55%; width: 34%; background: var(--brown-lt); }
+.cover-bar:nth-child(4) { left: 78%; width: 22%; background: var(--gold-lt); }
+
+.cover-seal {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  opacity: 0.22;
+  filter: brightness(1.4) grayscale(20%);
+  margin-bottom: 40px;
+}
+
+.cover-eyebrow {
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 0.55em;
+  text-transform: uppercase;
+  color: var(--gold-lt);
+  opacity: 0.75;
+  margin-bottom: 24px;
+}
+
+.cover-title {
+  font-weight: 900;
+  font-size: clamp(36px, 5vw, 72px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--linen);
+  text-align: center;
+  line-height: 1.0;
+  margin-bottom: 10px;
+}
+
+.cover-subtitle {
+  font-weight: 300;
+  font-size: clamp(14px, 1.8vw, 22px);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-lt);
+  text-align: center;
+  margin-bottom: 56px;
+  opacity: 0.80;
+}
+
+.cover-rule {
+  width: 80px;
+  height: 1.5px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin-bottom: 56px;
+}
+
+.cover-meta {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+}
+.cover-meta-item {
+  text-align: center;
+}
+.cover-meta-label {
+  font-size: 10px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--gold-lt);
+  opacity: 0.60;
+  margin-bottom: 6px;
+}
+.cover-meta-value {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--linen);
+  letter-spacing: 0.06em;
+  opacity: 0.85;
+}
+
+/* ─── Sections ─────────────────────────────────────────────────────────────── */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 60px;
+}
+
+.section + .section {
+  border-top: 1px solid var(--rule);
+}
+
+.section-dark {
+  background: var(--ink);
+  max-width: 100%;
+  padding: 100px 0;
+}
+.section-dark .section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+.section-eyebrow {
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 0.50em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-weight: 900;
+  font-size: clamp(28px, 3vw, 48px);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1.0;
+  margin-bottom: 16px;
+}
+
+.section-dark .section-title,
+.section-dark .section-eyebrow {
+  color: var(--linen);
+}
+.section-dark .section-eyebrow {
+  color: var(--gold-lt);
+  opacity: 0.75;
+}
+
+.section-rule {
+  width: 48px;
+  height: 1.5px;
+  background: linear-gradient(to right, var(--gold), var(--navy-lt));
+  margin-bottom: 40px;
+}
+
+.section-body {
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--brown-lt);
+  max-width: 640px;
+}
+.section-dark .section-body {
+  color: rgba(240,228,196,0.65);
+}
+
+/* ─── Colour palette ────────────────────────────────────────────────────────── */
+.palette-grid {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+.swatch {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.swatch-dot {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.swatch-hex {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--brown-lt);
+  font-weight: 400;
+}
+.swatch-name {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brown-lt);
+  opacity: 0.6;
+}
+
+/* ─── Version cards ─────────────────────────────────────────────────────────── */
+.version-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 48px;
+}
+
+.version-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  background: var(--cream);
+}
+
+.version-card-thumb {
+  width: 100%;
+  aspect-ratio: 3840 / 1080;
+  object-fit: cover;
+  display: block;
+  background: #000;
+}
+
+.version-card-body {
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.version-card-title {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.version-card-desc {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--brown-lt);
+}
+
+.version-card-specs {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-top: 8px;
+  border-top: 1px solid var(--rule);
+}
+.spec {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.spec-label {
+  font-size: 9px;
+  letter-spacing: 0.40em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.80;
+}
+.spec-value {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--brown);
+  letter-spacing: 0.04em;
+}
+
+/* ─── Animation stages ──────────────────────────────────────────────────────── */
+.stages-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.stage-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stage-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--ink);
+  font-weight: 900;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0;
+}
+
+.stage-title {
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--linen);
+}
+.stage-timing {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--gold-lt);
+  opacity: 0.65;
+  margin-top: -8px;
+}
+.stage-desc {
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(240,228,196,0.55);
+}
+
+/* ─── Screenshots gallery ───────────────────────────────────────────────────── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.gallery-img {
+  width: 100%;
+  border: 1px solid var(--rule);
+  display: block;
+}
+
+.gallery-caption {
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.10em;
+  color: var(--brown-lt);
+  text-transform: uppercase;
+}
+
+/* ─── Deliverables table ────────────────────────────────────────────────────── */
+.deliverables {
+  margin-top: 48px;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+}
+
+.deliverable-row {
+  display: grid;
+  grid-template-columns: 220px 1fr 1fr 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--rule);
+}
+.deliverable-row:last-child { border-bottom: none; }
+
+.deliverable-row.header {
+  background: var(--ink);
+}
+
+.deliverable-cell {
+  padding: 18px 24px;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--brown-lt);
+  border-right: 1px solid var(--rule);
+  line-height: 1.5;
+}
+.deliverable-cell:last-child { border-right: none; }
+
+.deliverable-row.header .deliverable-cell {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.40em;
+  text-transform: uppercase;
+  color: var(--gold-lt);
+  opacity: 0.75;
+  padding: 14px 24px;
+}
+
+.deliverable-name {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+}
+
+/* ─── Montage gallery ───────────────────────────────────────────────────────── */
+.montage-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.montage-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.montage-img {
+  width: 100%;
+  aspect-ratio: 16 / 5;
+  object-fit: cover;
+  display: block;
+  border: 1px solid rgba(200,144,32,0.20);
+}
+
+.montage-caption {
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.10em;
+  color: rgba(240,228,196,0.45);
+  text-transform: uppercase;
+}
+
+.montage-loop-callout {
+  margin-top: 48px;
+  padding: 36px 40px;
+  border: 1px solid rgba(200,144,32,0.20);
+  background: rgba(255,255,255,0.03);
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 32px;
+}
+
+.montage-loop-callout .lc-item {}
+.montage-loop-callout .lc-label {
+  font-size: 9px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold-lt);
+  opacity: 0.65;
+  margin-bottom: 10px;
+}
+.montage-loop-callout .lc-text {
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 1.70;
+  color: rgba(240,228,196,0.55);
+}
+
+
+/* ─── Concept cards ─────────────────────────────────────────────────────────── */
+.concept-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 56px;
+}
+
+.concept-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(200,144,32,0.18);
+  overflow: hidden;
+}
+
+.concept-thumb {
+  width: 100%;
+  aspect-ratio: 3840 / 1080;
+  object-fit: cover;
+  display: block;
+}
+
+.concept-body {
+  padding: 28px 32px 32px;
+  background: rgba(255,255,255,0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.concept-label {
+  font-size: 9px;
+  letter-spacing: 0.48em;
+  text-transform: uppercase;
+  color: var(--gold-lt);
+  opacity: 0.65;
+}
+
+.concept-title {
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--linen);
+  line-height: 1.1;
+}
+
+.concept-desc {
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 1.72;
+  color: rgba(240,228,196,0.52);
+  max-width: 520px;
+}
+
+.concept-palette {
+  display: flex;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(200,144,32,0.15);
+  align-items: center;
+}
+
+.concept-swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.concept-palette-label {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240,228,196,0.30);
+  margin-left: 6px;
+}
+
+.footer {
+  background: var(--ink);
+  padding: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(200,144,32,0.20);
+}
+
+.footer-seal {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  opacity: 0.20;
+  filter: brightness(1.4) grayscale(20%);
+}
+
+.footer-text {
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--linen);
+  opacity: 0.35;
+  text-align: center;
+}
+
+.footer-date {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--gold-lt);
+  opacity: 0.40;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<!-- COVER                                                                      -->
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-bars">
+    <div class="cover-bar"></div>
+    <div class="cover-bar"></div>
+    <div class="cover-bar"></div>
+    <div class="cover-bar"></div>
+  </div>
+
+  <img class="cover-seal" src="images/Catawba seal.png" alt="Catawba Nation Seal">
+
+  <div class="cover-eyebrow">Design Presentation</div>
+  <div class="cover-title">Event Backdrop</div>
+  <div class="cover-subtitle">Catawba Nation</div>
+  <div class="cover-rule"></div>
+
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Format</div>
+      <div class="cover-meta-value">3840 × 1080</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Versions</div>
+      <div class="cover-meta-value">Dark + Light</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<!-- BRAND FOUNDATION                                                           -->
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-eyebrow">01 — Brand Foundation</div>
+  <div class="section-title">Catawba Nation<br>Visual Identity</div>
+  <div class="section-rule"></div>
+  <p class="section-body">
+    The backdrop is built directly on the Catawba Nation brand guidelines — using the official colour palette, typography, and the Great Seal as a structural anchor. Every design decision traces back to an approved brand element.
+  </p>
+
+  <div class="palette-grid">
+    <!-- Earth tones -->
+    <div class="swatch">
+      <div class="swatch-dot" style="background:#5D4530;"></div>
+      <div class="swatch-hex">#5D4530</div>
+      <div class="swatch-name">Deep Brown</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-dot" style="background:#A07050;"></div>
+      <div class="swatch-hex">#A07050</div>
+      <div class="swatch-name">Mid Brown</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-dot" style="background:#D08539;"></div>
+      <div class="swatch-hex">#D08539</div>
+      <div class="swatch-name">Amber</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-dot" style="background:#F4C15A;"></div>
+      <div class="swatch-hex">#F4C15A</div>
+      <div class="swatch-name">Gold</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-dot" style="background:#9C3940;"></div>
+      <div class="swatch-hex">#9C3940</div>
+      <div class="swatch-name">Terracotta</div>
+    </div>
+    <!-- Complement -->
+    <div class="swatch">
+      <div class="swatch-dot" style="background:#1E3060; border-color:rgba(255,255,255,0.15);"></div>
+      <div class="swatch-hex">#1E3060</div>
+      <div class="swatch-name">Navy</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-dot" style="background:#5878A8;"></div>
+      <div class="swatch-hex">#5878A8</div>
+      <div class="swatch-name">Steel Blue</div>
+    </div>
+    <!-- Neutrals -->
+    <div class="swatch">
+      <div class="swatch-dot" style="background:#F0E4C4;"></div>
+      <div class="swatch-hex">#F0E4C4</div>
+      <div class="swatch-name">Linen</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-dot" style="background:#1A0E06; border-color:rgba(255,255,255,0.10);"></div>
+      <div class="swatch-hex">#1A0E06</div>
+      <div class="swatch-name">Ink</div>
+    </div>
+
+    <!-- Typography block -->
+    <div style="margin-left:32px; padding-left:40px; border-left:1.5px solid rgba(200,144,32,0.30); display:flex; flex-direction:column; gap:18px; justify-content:center;">
+      <div>
+        <div style="font-family:'Lato',sans-serif; font-weight:900; font-size:32px; letter-spacing:0.04em; text-transform:uppercase; color:var(--ink); line-height:1;">Lato Black</div>
+        <div style="font-size:10px; letter-spacing:0.40em; text-transform:uppercase; color:var(--gold); margin-top:6px;">Primary — Speaker Name</div>
+      </div>
+      <div>
+        <div style="font-family:'Lato',sans-serif; font-weight:300; font-size:18px; letter-spacing:0.40em; text-transform:uppercase; color:var(--brown-lt); line-height:1;">Lato Light</div>
+        <div style="font-size:10px; letter-spacing:0.40em; text-transform:uppercase; color:var(--gold); margin-top:6px;">Secondary — Labels &amp; Title</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<!-- VERSION OVERVIEW                                                           -->
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<div class="section" style="background:var(--ink); max-width:100%; padding: 100px 0;">
+  <div style="max-width:1200px; margin:0 auto; padding:0 60px;">
+    <div class="section-eyebrow" style="color:var(--gold-lt); opacity:0.75;">02 — Design Versions</div>
+    <div class="section-title" style="color:var(--linen);">Please Choose<br>Your Backdrop Style</div>
+    <div class="section-rule"></div>
+    <p class="section-body" style="color:rgba(240,228,196,0.60);">
+      We've developed two colour treatments of the same animated backdrop system. Both share identical motion choreography, speaker name reveal timing, and layout proportions — only the colour palette differs. We'd love to hear which direction feels right for the event.
+    </p>
+
+    <div class="version-grid">
+      <!-- Light version — PREFERRED -->
+      <div class="version-card">
+        <video class="version-card-thumb" src="catawba_backdrop_light.mp4" autoplay loop muted playsinline></video>
+        <div class="version-card-body">
+          <div class="version-card-title">Option A — Light <strong style="color:var(--gold); font-weight:700; font-size:12px; letter-spacing:0.08em;">[Preferred]</strong></div>
+          <div class="version-card-desc">
+            Warm linen-to-cool-white evolving gradient with multiply-blend diagonal bars. Refined and open — works beautifully in well-lit rooms and complements photography and presentation content on screen.
+          </div>
+          <div class="version-card-specs">
+            <div class="spec"><div class="spec-label">Mood</div><div class="spec-value">Refined &amp; Welcoming</div></div>
+            <div class="spec"><div class="spec-label">Use</div><div class="spec-value">Speaker introductions · LED wall</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dark version -->
+      <div class="version-card">
+        <video class="version-card-thumb" src="catawba_backdrop.mp4" autoplay loop muted playsinline></video>
+        <div class="version-card-body">
+          <div class="version-card-title">Option B — Dark</div>
+          <div class="version-card-desc">
+            Deep ink background evolving from warm brown to cool navy. Gold-bordered name panel, navy title panel. The Catawba Great Seal ghosts in on the left at 10% opacity. High-contrast and bold — built to command attention on a large LED wall.
+          </div>
+          <div class="version-card-specs">
+            <div class="spec"><div class="spec-label">Mood</div><div class="spec-value">Bold &amp; Ceremonial</div></div>
+            <div class="spec"><div class="spec-label">Use</div><div class="spec-value">Speaker introductions · LED wall</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<!-- CATAWBA HEROES — PHOTO MONTAGE                                             -->
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<div class="section" style="background:var(--ink); max-width:100%; padding:100px 0; margin-top:0; border-top:1px solid rgba(200,144,32,0.15);">
+  <div style="max-width:1200px; margin:0 auto; padding:0 60px;">
+    <div class="section-eyebrow" style="color:var(--gold-lt); opacity:0.75;">03 — Cultural Interstitials</div>
+    <div class="section-title" style="color:var(--linen);">Catawba Heroes<br>Photo Montage</div>
+    <div class="section-rule"></div>
+    <p class="section-body" style="color:rgba(240,228,196,0.60);">
+      Alongside the speaker backdrop, we've designed a dedicated video montage celebrating the heroes of Catawba Nation — featuring historical portraits, cultural imagery, and the stories behind the people who shaped the community. This is not a static slide show; each frame is a designed, animated tribute built in the same visual language as the event backdrop.
+    </p>
+
+    <div class="montage-grid">
+      <div class="montage-item">
+        <img class="montage-img" src="montage-screens/montage-03.png" alt="Catawba Heroes — full composition">
+        <div class="montage-caption">Full-width banner composition</div>
+      </div>
+      <div class="montage-item">
+        <img class="montage-img" src="montage-screens/montage-04.png" alt="Catawba Heroes — William Billy Bowlegs Harris">
+        <div class="montage-caption">William "Billy Bowlegs" Harris</div>
+      </div>
+      <div class="montage-item">
+        <img class="montage-img" src="montage-screens/montage-05.png" alt="Catawba Heroes — James Harris">
+        <div class="montage-caption">James Harris · Former Chief</div>
+      </div>
+      <div class="montage-item">
+        <img class="montage-img" src="montage-screens/montage-06.png" alt="Catawba Heroes — Chief Samuel Blue with crossbow">
+        <div class="montage-caption">Chief Samuel Blue · Crossbow</div>
+      </div>
+    </div>
+
+    <div class="montage-loop-callout">
+      <div class="lc-item">
+        <div class="lc-label">Loop Duration</div>
+        <div class="lc-text">The montage is designed to run on a 5+ minute continuous loop — long enough to feel rich and unhurried, short enough to reward repeat viewing throughout the event.</div>
+      </div>
+      <div class="lc-item">
+        <div class="lc-label">When It Plays</div>
+        <div class="lc-text">The montage fills the LED wall between speakers — during transitions, networking breaks, and arrival. It can also bookend the event, running before the programme begins and after the final speaker.</div>
+      </div>
+      <div class="lc-item">
+        <div class="lc-label">Intent</div>
+        <div class="lc-text">Each slide is a designed tribute to a Catawba hero — not a static photograph but an animated, branded moment. Together they honour the culture and people of the Catawba Nation throughout the entire event.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<!-- ANIMATION SYSTEM                                                           -->
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<div class="section" style="background:var(--ink); max-width:100%; padding:100px 0; margin-top:0; border-top:1px solid rgba(200,144,32,0.15);">
+  <div style="max-width:1200px; margin:0 auto; padding:0 60px;">
+    <div class="section-eyebrow" style="color:var(--gold-lt); opacity:0.75;">04 — Motion Design</div>
+    <div class="section-title" style="color:var(--linen);">Animation System</div>
+    <div class="section-rule"></div>
+
+    <div class="stages-grid">
+      <div class="stage-card">
+        <div class="stage-number">1</div>
+        <div class="stage-title">Background Live</div>
+        <div class="stage-timing">0s — continuous</div>
+        <div class="stage-desc">Evolving gradient shifts slowly between warm brown and cool navy. Seven wide diagonal parallelogram bars drift at varied speeds creating parallax depth. Screen blend mode brightens intersections.</div>
+      </div>
+      <div class="stage-card">
+        <div class="stage-number">2</div>
+        <div class="stage-title">Label Drop</div>
+        <div class="stage-timing">0.6s</div>
+        <div class="stage-desc">"Speaker" label descends from above with a spring overshoot — arrives with gentle bounce before settling. Establishes the zone before the boxes arrive.</div>
+      </div>
+      <div class="stage-card">
+        <div class="stage-number">3</div>
+        <div class="stage-title">Box Construction</div>
+        <div class="stage-timing">0.9s → 1.2s</div>
+        <div class="stage-desc">Name box (Box A) swings in from the right with inertia — spring cubic-bezier, slight scaleX overshoot. Title box (Box B) follows 300ms later at a different spring tension, creating staggered weight.</div>
+      </div>
+      <div class="stage-card">
+        <div class="stage-number">4</div>
+        <div class="stage-title">Text Reveal</div>
+        <div class="stage-timing">2.4s — held</div>
+        <div class="stage-desc">Once both boxes are fully settled, the name and title fade in together. A thin gold rule draws left-to-right inside the name box. Text holds for the remainder of the 30-second loop.</div>
+      </div>
+    </div>
+
+    <!-- Background system detail -->
+    <div style="margin-top:64px; padding-top:48px; border-top:1px solid rgba(200,144,32,0.15);">
+      <div style="font-size:10px; letter-spacing:0.40em; text-transform:uppercase; color:var(--gold-lt); opacity:0.65; margin-bottom:24px;">Background Motion Layers</div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:32px;">
+        <div>
+          <div style="font-weight:700; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--linen); margin-bottom:10px;">Gradient Base</div>
+          <div style="font-weight:300; font-size:13px; line-height:1.65; color:rgba(240,228,196,0.50);">Three sinusoidal oscillators drive RGB channel values independently — left zone warm, right zone cool — slowly breathing between states. Period ~5–7 minutes per full cycle.</div>
+        </div>
+        <div>
+          <div style="font-weight:700; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--linen); margin-bottom:10px;">Diagonal Bars</div>
+          <div style="font-weight:300; font-size:13px; line-height:1.65; color:rgba(240,228,196,0.50);">Seven wide parallelogram planes drift left at deliberately different speeds (0.000015–0.000085 px/ms). Screen blend creates luminous intersections. Each bar 45–70% of screen width.</div>
+        </div>
+        <div>
+          <div style="font-weight:700; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--linen); margin-bottom:10px;">Arc &amp; Line System</div>
+          <div style="font-weight:300; font-size:13px; line-height:1.65; color:rgba(240,228,196,0.50);">Eight large circular arcs sweep slowly at screen edges. Eleven diagonal drift lines cross at 22°. Fine horizontal grid lines travel up or down at opposing speeds, adding woven texture depth.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<!-- SCREENSHOTS                                                                -->
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-eyebrow">05 — Preview Frames</div>
+  <div class="section-title">Design Detail</div>
+  <div class="section-rule"></div>
+  <p class="section-body">Close-up captures showing the text reveal composition, box layout, and colour treatment across both versions.</p>
+
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img class="gallery-img" src="Screenshot 2026-05-05 at 12.58.46.png" alt="Light version detail">
+      <div class="gallery-caption">Light — Text box composition detail <strong style="color:var(--gold); font-weight:700; letter-spacing:0.08em;">[Preferred]</strong></div>
+    </div>
+    <div class="gallery-item">
+      <img class="gallery-img" src="Screenshot 2026-05-05 at 13.01.17.png" alt="Dark version detail">
+      <div class="gallery-caption">Dark — Text box composition detail</div>
+    </div>
+    <div class="gallery-item">
+      <img class="gallery-img" src="Screenshot 2026-05-05 at 12.35.20.png" alt="Dark version screenshot">
+      <div class="gallery-caption">Dark — Full LED wall view</div>
+    </div>
+    <div class="gallery-item">
+      <img class="gallery-img" src="Screenshot 2026-05-05 at 12.37.52.png" alt="Light version screenshot">
+      <div class="gallery-caption">Light — Full LED wall view</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<!-- FURTHER CONCEPTS                                                            -->
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<div class="section" style="background:var(--ink); max-width:100%; padding:100px 0; margin-top:0; border-top:1px solid rgba(200,144,32,0.15);">
+  <div style="max-width:1200px; margin:0 auto; padding:0 60px;">
+    <div class="section-eyebrow" style="color:var(--gold-lt); opacity:0.75;">06 — Further Concepts</div>
+    <div class="section-title" style="color:var(--linen);">Four Alternative<br>Directions</div>
+    <div class="section-rule"></div>
+    <p class="section-body" style="color:rgba(240,228,196,0.60);">
+      Each concept uses the same speaker name reveal system and brand palette — only the background treatment changes. Two draw directly on Catawba cultural iconography: the pottery tradition and the woven textile heritage.
+    </p>
+
+    <div class="concept-grid">
+
+      <!-- Concept A: Pottery Marks -->
+      <div class="concept-card">
+        <img class="concept-thumb" src="concept-stills/concept_a.jpg" alt="Concept A — Pottery Marks">
+        <div class="concept-body">
+          <div class="concept-label">Concept A · Catawba Iconography</div>
+          <div class="concept-title">Pottery Marks</div>
+          <div class="concept-desc">
+            The Catawba Nation carries one of the Southeast's last unbroken pottery traditions. This backdrop makes that heritage visible — a ghosted field of diamond and chevron forms drawn from traditional Catawba vessel patterns drifts slowly across a deep terracotta-to-ink gradient. The geometry is spare and deliberate, never decorative for its own sake.
+          </div>
+          <div class="concept-palette">
+            <div class="concept-swatch" style="background:#1A0E06;"></div>
+            <div class="concept-swatch" style="background:#9C3940;"></div>
+            <div class="concept-swatch" style="background:#D08539;"></div>
+            <div class="concept-swatch" style="background:#F4C15A;"></div>
+            <div class="concept-swatch" style="background:#A07050;"></div>
+            <div class="concept-palette-label">Terracotta · Amber · Gold</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Concept B: The River -->
+      <div class="concept-card">
+        <img class="concept-thumb" src="concept-stills/concept_b.jpg" alt="Concept B — The River">
+        <div class="concept-body">
+          <div class="concept-label">Concept B · Elemental</div>
+          <div class="concept-title">The River</div>
+          <div class="concept-desc">
+            Catawba means "people of the river." This concept translates that identity into motion — slow-flowing horizontal wave bands in deep navy and midnight blue suggest the Catawba River at dusk. A gold shimmer line runs at the horizon; fine sparkle particles drift like light on water. Serene and ceremonial.
+          </div>
+          <div class="concept-palette">
+            <div class="concept-swatch" style="background:#08121e;"></div>
+            <div class="concept-swatch" style="background:#1E3060;"></div>
+            <div class="concept-swatch" style="background:#5878A8;"></div>
+            <div class="concept-swatch" style="background:#F4C15A;"></div>
+            <div class="concept-palette-label">Deep Navy · Steel · Gold</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Concept C: Ember Field -->
+      <div class="concept-card">
+        <img class="concept-thumb" src="concept-stills/concept_c.jpg" alt="Concept C — Ember Field">
+        <div class="concept-body">
+          <div class="concept-label">Concept C · Atmospheric</div>
+          <div class="concept-title">Ember Field</div>
+          <div class="concept-desc">
+            A near-black field of rising gold and amber particles — like embers lifting from a fire, or stars above open land. Warm bloom zones pulse slowly beneath the surface. The most cinematic and intimate of the four directions. Works especially well for evening events.
+          </div>
+          <div class="concept-palette">
+            <div class="concept-swatch" style="background:#0A0604;"></div>
+            <div class="concept-swatch" style="background:#9C3940;"></div>
+            <div class="concept-swatch" style="background:#D08539;"></div>
+            <div class="concept-swatch" style="background:#F4C15A;"></div>
+            <div class="concept-palette-label">Ink · Ember · Gold</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Concept D: Woven Nation -->
+      <div class="concept-card">
+        <img class="concept-thumb" src="concept-stills/concept_d.jpg" alt="Concept D — Woven Nation">
+        <div class="concept-body">
+          <div class="concept-label">Concept D · Catawba Iconography</div>
+          <div class="concept-title">Woven Nation</div>
+          <div class="concept-desc">
+            Catawba basketweave and textile traditions are among the community's most enduring art forms. Two interlocking diagonal thread grids — drifting at different speeds — create a living weave across a deep warm-brown ground. Gold thread lines catch light at the intersections. Earthy, structured, and unmistakably Catawba.
+          </div>
+          <div class="concept-palette">
+            <div class="concept-swatch" style="background:#261006;"></div>
+            <div class="concept-swatch" style="background:#5D4530;"></div>
+            <div class="concept-swatch" style="background:#A07050;"></div>
+            <div class="concept-swatch" style="background:#D08539;"></div>
+            <div class="concept-swatch" style="background:#F4C15A;"></div>
+            <div class="concept-palette-label">Deep Brown · Amber · Gold Thread</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<!-- FOOTER                                                                     -->
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<div class="footer">
+  <img class="footer-seal" src="images/Catawba seal.png" alt="">
+  <div class="footer-text">Catawba Nation — Event Backdrop · Design Presentation</div>
+  <div class="footer-date">May 2026</div>
+</div>
+
+</body>
+</html>

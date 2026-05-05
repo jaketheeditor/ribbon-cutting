@@ -615,6 +615,69 @@ body {
   opacity: 0.40;
 }
 
+/* ── Lightbox ──────────────────────────────────────────────────────────────── */
+.lb-trigger {
+  cursor: zoom-in;
+  position: relative;
+  display: block;
+}
+.lb-trigger::after {
+  content: '⛶  View';
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(200,144,32,0.40);
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(244,193,90,0.80);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+.lb-trigger:hover::after { opacity: 1; }
+
+#lb-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.92);
+  cursor: zoom-out;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+#lb-overlay.open { display: flex; }
+
+#lb-overlay img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  box-shadow: 0 0 80px rgba(0,0,0,0.8);
+  cursor: default;
+}
+
+#lb-close {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  font-size: 28px;
+  color: rgba(244,193,90,0.75);
+  cursor: pointer;
+  line-height: 1;
+  font-family: sans-serif;
+  font-weight: 300;
+  transition: color 0.15s;
+  z-index: 10000;
+}
+#lb-close:hover { color: #F4C15A; }
+
 /* ── Fullscreen video click ────────────────────────────────────────────────── */
 .fs-wrap {
   position: relative;
@@ -1062,16 +1125,55 @@ body {
   <div class="footer-date">May 2026</div>
 </div>
 
+<div id="lb-overlay" onclick="lbClose()">
+  <span id="lb-close" onclick="lbClose()">✕</span>
+  <img id="lb-img" src="" alt="" onclick="event.stopPropagation()">
+</div>
+
 <script>
+// ── Lightbox ───────────────────────────────────────────────────────────────
+const LB_SELECTORS = ['.gallery-img', '.concept-thumb', '.montage-img'];
+
+document.addEventListener('DOMContentLoaded', function () {
+  LB_SELECTORS.forEach(function(sel) {
+    document.querySelectorAll(sel).forEach(function(img) {
+      // Wrap in a relative container for the ::after badge
+      const wrap = document.createElement('span');
+      wrap.className = 'lb-trigger';
+      img.parentNode.insertBefore(wrap, img);
+      wrap.appendChild(img);
+      wrap.addEventListener('click', function() { lbOpen(img.src, img.alt); });
+    });
+  });
+});
+
+function lbOpen(src, alt) {
+  const overlay = document.getElementById('lb-overlay');
+  const img     = document.getElementById('lb-img');
+  img.src = src;
+  img.alt = alt || '';
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function lbClose() {
+  document.getElementById('lb-overlay').classList.remove('open');
+  document.getElementById('lb-img').src = '';
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') lbClose();
+});
+
+// ── Video fullscreen ───────────────────────────────────────────────────────
 function fsPlay(wrap) {
   const video = wrap.querySelector('video');
-  // Unmute for fullscreen so client hears the ambient audio if any
   const req = video.requestFullscreen || video.webkitRequestFullscreen || video.mozRequestFullScreen || video.msRequestFullscreen;
   if (req) {
     req.call(video);
     video.muted = false;
   }
-  // Re-mute when they exit fullscreen
   document.addEventListener('fullscreenchange', function onExit() {
     if (!document.fullscreenElement) {
       video.muted = true;

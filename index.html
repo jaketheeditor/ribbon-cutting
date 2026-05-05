@@ -615,6 +615,52 @@ body {
   opacity: 0.40;
 }
 
+/* ── Fullscreen video click ────────────────────────────────────────────────── */
+.fs-wrap {
+  position: relative;
+  cursor: pointer;
+  display: block;
+  overflow: hidden;
+}
+
+.fs-wrap video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3840 / 1080;
+  object-fit: cover;
+  background: #000;
+}
+
+.fs-hint {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(200,144,32,0.40);
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(244,193,90,0.80);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.fs-wrap:hover .fs-hint {
+  opacity: 1;
+}
+
+/* fullscreen native controls while in fullscreen */
+.fs-wrap video:fullscreen        { width: 100%; height: 100%; object-fit: contain; }
+.fs-wrap video:-webkit-full-screen { width: 100%; height: 100%; object-fit: contain; }
+
 </style>
 </head>
 <body>
@@ -740,7 +786,10 @@ body {
     <div class="version-grid">
       <!-- Light version — PREFERRED -->
       <div class="version-card">
-        <video class="version-card-thumb" src="catawba_backdrop_light.mp4" autoplay loop muted playsinline></video>
+        <div class="fs-wrap" onclick="fsPlay(this)">
+          <video class="version-card-thumb" src="catawba_backdrop_light.mp4" autoplay loop muted playsinline></video>
+          <div class="fs-hint">⛶ &nbsp;Full screen</div>
+        </div>
         <div class="version-card-body">
           <div class="version-card-title">Option A — Light <strong style="color:var(--gold); font-weight:700; font-size:12px; letter-spacing:0.08em;">[Preferred]</strong></div>
           <div class="version-card-desc">
@@ -755,7 +804,10 @@ body {
 
       <!-- Dark version -->
       <div class="version-card">
-        <video class="version-card-thumb" src="catawba_backdrop.mp4" autoplay loop muted playsinline></video>
+        <div class="fs-wrap" onclick="fsPlay(this)">
+          <video class="version-card-thumb" src="catawba_backdrop.mp4" autoplay loop muted playsinline></video>
+          <div class="fs-hint">⛶ &nbsp;Full screen</div>
+        </div>
         <div class="version-card-body">
           <div class="version-card-title">Option B — Dark</div>
           <div class="version-card-desc">
@@ -1010,5 +1062,23 @@ body {
   <div class="footer-date">May 2026</div>
 </div>
 
+<script>
+function fsPlay(wrap) {
+  const video = wrap.querySelector('video');
+  // Unmute for fullscreen so client hears the ambient audio if any
+  const req = video.requestFullscreen || video.webkitRequestFullscreen || video.mozRequestFullScreen || video.msRequestFullscreen;
+  if (req) {
+    req.call(video);
+    video.muted = false;
+  }
+  // Re-mute when they exit fullscreen
+  document.addEventListener('fullscreenchange', function onExit() {
+    if (!document.fullscreenElement) {
+      video.muted = true;
+      document.removeEventListener('fullscreenchange', onExit);
+    }
+  });
+}
+</script>
 </body>
 </html>
